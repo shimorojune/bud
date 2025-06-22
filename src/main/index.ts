@@ -1,6 +1,6 @@
 import { electronApp } from '@electron-toolkit/utils'
 import { app, BrowserWindow, globalShortcut } from 'electron'
-import { setup } from './helpers'
+import { registerShortcuts, setup } from './helpers'
 import mainWindow from './windows/mainWindow'
 
 // This method will be called when Electron has finished
@@ -12,6 +12,8 @@ app.whenReady().then(() => {
     app,
     electronApp
   })
+  // ----------------------------------------
+  registerShortcuts()
   // ----------------------------------------
   mainWindow()
   // ----------------------------------------
