@@ -1,6 +1,5 @@
 import { ElectronApp, optimizer } from '@electron-toolkit/utils'
-import { BrowserWindow, globalShortcut, ipcMain } from 'electron'
-import mainWindow from './windows/mainWindow'
+import { globalShortcut, ipcMain } from 'electron'
 
 export const setup = ({
   app,
@@ -21,12 +20,6 @@ export const setup = ({
   // ----------------------------------------
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
-  // ----------------------------------------
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) mainWindow()
-  })
 }
 
 // ---------------------------------------------------------------

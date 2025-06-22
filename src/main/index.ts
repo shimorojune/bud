@@ -1,5 +1,5 @@
 import { electronApp } from '@electron-toolkit/utils'
-import { app, globalShortcut } from 'electron'
+import { app, BrowserWindow, globalShortcut } from 'electron'
 import { setup } from './helpers'
 import mainWindow from './windows/mainWindow'
 
@@ -14,6 +14,12 @@ app.whenReady().then(() => {
   })
   // ----------------------------------------
   mainWindow()
+  // ----------------------------------------
+  app.on('activate', function () {
+    // On macOS it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (BrowserWindow.getAllWindows().length === 0) mainWindow()
+  })
 })
 
 app.on('will-quit', () => {
