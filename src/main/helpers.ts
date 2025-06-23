@@ -1,5 +1,6 @@
 import { ElectronApp, optimizer } from '@electron-toolkit/utils'
 import { globalShortcut, ipcMain } from 'electron'
+import chatWindow from './windows/chatWindow'
 
 export const setup = ({
   app,
@@ -28,5 +29,6 @@ export const registerShortcuts = (): void => {
   // Register a global shortcut, e.g., Ctrl+Shift+O
   globalShortcut.register('Control+Shift+O', () => {
     console.log('Global shortcut Ctrl+Shift+O pressed')
+    chatWindow()
   })
 }
